@@ -1,5 +1,15 @@
+:root {
+  --dark: #000000;
+  --light: #ffffff;
+  --primary-a: #9cd0b3;
+  --primary-b: #b4e5ba;
+  --primary-c: #e2f2e1;
+  --secondary-a: #5a5141;
+  --secondary-b: #7a624f;
+}
+
 body {
-  background-color: #eeeeee;
+  background-color: var(--primary-c);
 }
 
 .logo-sm {
@@ -11,4 +21,12 @@ body {
   background: none !important;
   border: none;
   cursor: pointer;
+}
+
+nav {
+  background-color: var(--secondary-a);
+}
+
+nav .nav-link {
+  color: var(--primary-c);
 }

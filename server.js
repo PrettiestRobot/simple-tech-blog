@@ -10,7 +10,12 @@ const routes = require('./routes');
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-const hbs = exphbs.create();
+const hbs = exphbs.create({
+  // Other options...
+  runtimeOptions: {
+    allowProtoPropertiesByDefault: true,
+  },
+});
 
 const sessionConfig = {
   secret: process.env.SESSION_SECRET,

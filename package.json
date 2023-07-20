@@ -1,5 +1,5 @@
 {
-  "name": "project-2-template",
+  "name": "simple-tech-blog",
   "version": "1.0.0",
   "description": "starter template for project 2",
   "main": "server.js",
@@ -7,19 +7,20 @@
     "dev": "nodemon server.js",
     "seed": "node seeds",
     "lint": "eslint --fix --ext .js .",
-    "test": "test"
+    "test": "test",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "connect-session-sequelize": "^7.1.5",
-    "dotenv": "^16.0.3",
+    "connect-session-sequelize": "^7.1.7",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "express-handlebars": "^6.0.6",
+    "express-handlebars": "^6.0.7",
     "express-session": "^1.17.3",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.25.3"
+    "sequelize": "^6.32.1"
   },
   "devDependencies": {
     "eslint": "^8.27.0",
@@ -28,5 +29,13 @@
     "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.20",
     "prettier": "2.8.8"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrettiestRobot/simple-tech-blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PrettiestRobot/simple-tech-blog/issues"
+  },
+  "homepage": "https://github.com/PrettiestRobot/simple-tech-blog#readme"
 }
