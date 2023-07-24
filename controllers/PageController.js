@@ -3,6 +3,8 @@ const { Post, User, Review } = require('../models');
 module.exports = {
   getHomePage: async (req, res) => {
     try {
+      // Check if the user is authenticated
+      const isAuthenticated = req.session.isAuthenticated || false;
       // Retrieve the 10 most recently created posts along with their associated users
       const posts = await Post.findAll({
         include: [
@@ -37,6 +39,7 @@ module.exports = {
           firstName: post.User.firstName,
           lastName: post.User.lastName,
         })), // Pass the retrieved posts to the template
+        isAuthenticated,
       });
     } catch (err) {
       console.error(err);
@@ -65,5 +68,44 @@ module.exports = {
     }
   },
 
-  getUserPost: async (req, res) => {},
+  getPost: async (req, res) => {
+    try {
+      const { id } = req.params;
+
+      // Retrieve the post with the specified id, including associated reviews
+      const postData = await Post.findByPk(id, {
+        include: [Review],
+      });
+
+      res.render('post', {
+        postName: postData.postName,
+        postContent: postData.postContent,
+        postDate: postData.postDate.toLocaleString('en-US', {
+          month: 'long',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true,
+        }),
+        firstName: postData.User.firstName,
+        lastName: postData.User.lastName,
+        isAuthenticated: req.session.isAuthenticated,
+        reviews: postData.Reviews.map(review => ({
+          reviewContent: review.reviewContent,
+          reviewDate: review.reviewDate.toLocaleString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+          }),
+          firstName: review.User.firstName,
+          lastName: review.User.lastName,
+        })), // Pass the retrieved reviews to the template
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Failed to retrieve post' });
+    }
+  },
 };

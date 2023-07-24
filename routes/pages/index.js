@@ -2,7 +2,7 @@ const router = require('express').Router();
 const {
   getHomePage,
   getDashboard,
-  getUserPost,
+  getPost,
 } = require('../../controllers/PageController');
 const isAuthenticated = require('../../middleware/isAuthenticated');
 
@@ -14,6 +14,6 @@ router.get('/login', (req, res) => res.render('login'));
 // Pages with data
 router.get('/', isAuthenticated, getHomePage);
 router.get('/dashboard', isAuthenticated, getDashboard);
-router.get('/dashboard/:id', isAuthenticated, getUserPost);
+router.get('/dashboard/:id', isAuthenticated, getPost);
 
 module.exports = router;
