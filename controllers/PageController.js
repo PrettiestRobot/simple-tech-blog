@@ -1,7 +1,7 @@
 const { Post, User, Review } = require('../models');
 
 module.exports = {
-  getHomePage: async (req, res) => {
+  getIndexPage: async (req, res) => {
     try {
       // Check if the user is authenticated
       const isAuthenticated = req.session.isAuthenticated || false;
@@ -24,7 +24,7 @@ module.exports = {
       // Filter out users who don't have any posts
       const filteredPosts = posts.filter(post => post.User.Posts.length > 0);
 
-      res.render('Homepage', {
+      res.render('index', {
         welcomeMessage: 'Welcome to the blog!',
         posts: filteredPosts.map(post => ({
           postName: post.postName,

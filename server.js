@@ -19,11 +19,7 @@ const hbs = exphbs.create({
 
 const sessionConfig = {
   secret: process.env.SESSION_SECRET,
-  cookie: {
-    maxAge: 86400000, // 24 hours (in milliseconds)
-    secure: true, // Set to true in production if using HTTPS
-    httpOnly: true,
-  },
+  cookie: {},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({

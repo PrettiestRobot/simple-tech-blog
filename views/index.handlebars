@@ -1,0 +1,21 @@
+<h1 class='text-center mt-5 mb-5'>{{welcomeMessage}}</h1>
+
+<section class='container'>
+  {{#each posts}}
+
+    <div class='card mb-3' style='width: 100%;'>
+      <div class='card-body'>
+        <div class='card-section-head'>
+          <h5 class='card-title'>{{postName}}</h5>
+          <h6 class='card-subtitle text-body-secondary'>Posted by
+            {{firstName}}
+            {{lastName}}
+            on
+            {{postDate}}</h6>
+        </div>
+        <p class='card-text'>{{postContent}}</p>
+      </div>
+    </div>
+
+  {{/each}}
+</section>
