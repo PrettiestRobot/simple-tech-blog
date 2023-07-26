@@ -14,7 +14,7 @@ module.exports = {
       });
 
       // Send a success response
-      res.status(200).json({ message: 'Post created successfully' });
+      // res.status(200).json({ message: 'Post created successfully' });
       res.redirect('/dashboard');
     } catch (err) {
       console.error(err);
@@ -48,24 +48,23 @@ module.exports = {
   },
 
   deletePost: async (req, res) => {
-    const { id } = req.params;
-
     try {
-      // Find the post with the provided ID
-      const post = await Post.findByPk(id);
+      const postData = await Post.destroy({
+        where: {
+          id: req.params.id,
+          user_id: req.session.currentUser.id,
+        },
+      });
 
-      if (!post) {
-        return res.status(404).json({ error: 'Post not found' });
+      if (!postData) {
+        res.status(404).json({ message: 'No post found with this id!' });
+        return;
       }
 
-      // Delete the post
-      await post.destroy();
-
-      // Send a success response
-      res.status(200).json({ message: 'Post deleted successfully' });
+      res.redirect('/dashboard');
     } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Failed to delete post' });
+      console.log(err);
+      res.status(500).json(err);
     }
   },
 };

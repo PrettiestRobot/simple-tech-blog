@@ -4,8 +4,11 @@ const {
   PostController,
   ReviewController,
 } = require('../../controllers');
+const methodOverride = require('method-override');
 
 const isAuthenticated = require('../../middleware/isAuthenticated');
+
+router.use(methodOverride('_method'));
 
 router.post('/register', UserController.register);
 router.post('/login', UserController.login);
