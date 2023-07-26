@@ -2,20 +2,48 @@ const { Post, User, Review } = require('../models');
 
 module.exports = {
   createNewPost: async (req, res) => {
-    const {
-      body: { title, content },
-    } = req;
+    const { postName, postContent } = req.body;
+    const userId = req.session.currentUser.id;
+
     try {
+      // Create a new post
       const newPost = await Post.create({
-        title,
-        content,
-        userId: req.session.currentUser.id,
+        postName,
+        postContent,
+        userId,
       });
 
-      res.status(200).json(newPost);
+      // Send a success response
+      res.status(200).json({ message: 'Post created successfully' });
+      res.redirect('/dashboard');
     } catch (err) {
       console.error(err);
-      res.status(500).json(err);
+      res.status(500).json({ error: 'Failed to create new post' });
+    }
+  },
+
+  updatePost: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { postName, postContent } = req.body;
+
+      // Find the post with the provided ID
+      const post = await Post.findByPk(id);
+
+      if (!post) {
+        return res.status(404).json({ error: 'Post not found' });
+      }
+
+      // Update the post
+      post.postName = postName;
+      post.postContent = postContent;
+      await post.save();
+
+      // Send a success response
+      res.status(200).json({ message: 'Post updated successfully' });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Failed to update post' });
     }
   },
 

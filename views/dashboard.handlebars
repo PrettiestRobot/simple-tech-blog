@@ -1,16 +1,23 @@
-<h1 class='text-center mt-5 mb-5'>{{welcomeMessage}}</h1>
+<h1 class='text-center mt-5 mb-4'>{{welcomeMessage}}</h1>
 
 <section class='container'>
+  <div class='row'>
+    <div class='col-md-8 offset-md-2 col-lg-6 offset-lg-3'>
+      <a
+        class='btn btn-primary btn-lg w-100 mt-4 p-3'
+        href='/dashboard/newpost'
+        target='_self'
+      >Create New Post</a>
+    </div>
+  </div>
+
   {{#each posts}}
 
     <div class='card mb-3' style='width: 100%;'>
       <div class='card-body'>
         <div class='card-section-head'>
           <h5 class='card-title'>{{postName}}</h5>
-          <h6 class='card-subtitle text-body-secondary'>Posted by
-            {{firstName}}
-            {{lastName}}
-            on
+          <h6 class='card-subtitle text-body-secondary'>Posted on
             {{postDate}}</h6>
         </div>
         <p class='card-text'>{{postContent}}</p>

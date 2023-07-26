@@ -57,10 +57,22 @@ module.exports = {
         include: [Review],
       });
 
+      // Format the postDate in "Month day at hour:minute AM/PM" format
+      const formattedPosts = userPosts.map(post => ({
+        ...post.toJSON(),
+        postDate: new Date(post.postDate).toLocaleString('en-US', {
+          month: 'long',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true,
+        }),
+      }));
+
       res.render('dashboard', {
         welcomeMessage: `Welcome to your dashboard ${req.session.currentUser.firstName}!`,
         isAuthenticated: req.session.isAuthenticated,
-        posts: userPosts, // Pass the retrieved user posts to the template
+        posts: formattedPosts, // Pass the retrieved user posts to the template
       });
     } catch (err) {
       console.error(err);
@@ -107,5 +119,11 @@ module.exports = {
       console.error(err);
       res.status(500).json({ error: 'Failed to retrieve post' });
     }
+  },
+
+  getNewPostForm: async (req, res) => {
+    res.render('newpost', {
+      isAuthenticated: req.session.isAuthenticated,
+    });
   },
 };
