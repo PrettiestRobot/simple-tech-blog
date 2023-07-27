@@ -5,7 +5,7 @@
 
     <div class='card mb-3' style='width: 100%;'>
       <div class='card-body'>
-        <div class='card-section-head'>
+        <div class='card-section-head post-header'>
           <h5 class='card-title'>{{postName}}</h5>
           <h6 class='card-subtitle text-body-secondary'>Posted by
             {{firstName}}
@@ -15,34 +15,35 @@
         </div>
         <p class='card-text'>{{postContent}}</p>
       </div>
-      <div class='card-footer'>
+      <div class='card-footer post-header'>
         <h5>Reviews:</h5>
-      </div>
-      {{#each reviews}}
-        <div class='card-footer'>
-          <h6 class='card-subtitle text-body-secondary'>Posted by
-            {{reviewFirstName}}
-            {{reviewLastName}}
-            on
-            {{reviewDate}}</h6>
-          <p class='card-text'>{{reviewContent}}</p>
-          {{!-- {{#if isAuthenticated}} --}}
-          {{!-- {{#ifEquals reviewUserId currentUserId}} --}}
-          <a
-            class='btn btn-danger btn-sm p-1 review-delete'
-            data-id='{{reviewId}}'
-          >Delete</a>
-          {{!-- {{/ifEquals}}
-          {{/if}} --}}
-        </div>
-      {{/each}}
-      <div class='card-footer'>
         <a
           class='btn btn-primary btn-sm p-1'
           href='/index/{{postId}}/newreview'
           target='_self'
         >Leave Review</a>
       </div>
+      {{#each reviews}}
+        <div class='card-footer'>
+          <div class='post-header'>
+            <h6 class='card-subtitle text-body-secondary'>Posted by
+              {{reviewFirstName}}
+              {{reviewLastName}}
+              on
+              {{reviewDate}}</h6>
+            {{!-- {{#if isAuthenticated}} --}}
+            {{!-- {{#ifEquals reviewUserId currentUserId}} --}}
+            <a
+              class='btn btn-danger btn-sm p-1 review-delete'
+              data-id='{{reviewId}}'
+            >Delete</a>
+            {{!-- {{/ifEquals}}
+          {{/if}} --}}</div>
+
+          <p class='card-text'>{{reviewContent}}</p>
+
+        </div>
+      {{/each}}
 
     </div>
 

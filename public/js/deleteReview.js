@@ -15,6 +15,3 @@ const deleteReviewBtn = document.querySelector('.review-delete');
 if (deleteReviewBtn) {
   deleteReviewBtn.addEventListener('click', deleteReviewButtonHandler);
 }
-// document
-//   .querySelector('.review-delete')
-//   .addEventListener('click', deleteReviewButtonHandler);

@@ -30,3 +30,17 @@ nav {
 nav .nav-link {
   color: var(--primary-c);
 }
+
+.navbar-brand {
+  color: var(--secondary-a);
+  font-weight: 700;
+  background-color: var(--primary-a);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

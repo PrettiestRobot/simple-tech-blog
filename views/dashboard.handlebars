@@ -14,20 +14,21 @@
   {{#each posts}}
     <div class='card mb-3' style='width: 100%;'>
       <div class='card-body'>
-        <div class='card-section-head'>
+        <div class='card-section-head post-header'>
           <h5 class='card-title'>{{postName}}</h5>
           <h6 class='card-subtitle text-body-secondary'>Posted on
             {{postDate}}</h6>
         </div>
         <p class='card-text'>{{postContent}}</p>
-        <div class='card-footer'>
-          <a
-            class='btn btn-primary btn-sm p-1'
-            href='/dashboard/{{id}}/edit'
-            target='_self'
-          >Edit Post</a>
-          <a class='btn btn-danger btn-sm p-1' data-id='{{id}}'>Delete Post</a>
-        </div>
+
+      </div>
+      <div class='card-footer'>
+        <a
+          class='btn btn-primary btn-sm p-1'
+          href='/dashboard/{{id}}/edit'
+          target='_self'
+        >Edit Post</a>
+        <a class='btn btn-danger btn-sm p-1' data-id='{{id}}'>Delete Post</a>
       </div>
     </div>
 
