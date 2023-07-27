@@ -16,13 +16,36 @@
         <p class='card-text'>{{postContent}}</p>
       </div>
       <div class='card-footer'>
+        <h5>Reviews:</h5>
+      </div>
+      {{#each reviews}}
+        <div class='card-footer'>
+          <h6 class='card-subtitle text-body-secondary'>Posted by
+            {{reviewFirstName}}
+            {{reviewLastName}}
+            on
+            {{reviewDate}}</h6>
+          <p class='card-text'>{{reviewContent}}</p>
+          {{!-- {{#if isAuthenticated}} --}}
+          {{!-- {{#ifEquals reviewUserId currentUserId}} --}}
+          <a
+            class='btn btn-danger btn-sm p-1 review-delete'
+            data-id='{{reviewId}}'
+          >Delete</a>
+          {{!-- {{/ifEquals}}
+          {{/if}} --}}
+        </div>
+      {{/each}}
+      <div class='card-footer'>
         <a
           class='btn btn-primary btn-sm p-1'
-          href='/dashboard/editpost/{{id}}'
+          href='/index/{{postId}}/newreview'
           target='_self'
         >Leave Review</a>
       </div>
+
     </div>
 
   {{/each}}
 </section>
+<script src='js/deleteReview.js'></script>

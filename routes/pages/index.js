@@ -4,6 +4,8 @@ const {
   getDashboard,
   getPost,
   getNewPostForm,
+  getNewReviewForm,
+  getEditPostForm,
 } = require('../../controllers/PageController');
 const isAuthenticated = require('../../middleware/isAuthenticated');
 
@@ -16,6 +18,7 @@ router.get('/login', (req, res) => res.render('login'));
 router.get('/index', isAuthenticated, getIndexPage);
 router.get('/dashboard', isAuthenticated, getDashboard);
 router.get('/dashboard/newpost', isAuthenticated, getNewPostForm);
-router.get('/dashboard/veiw/:id', isAuthenticated, getPost);
+router.get('/dashboard/:id/edit', isAuthenticated, getEditPostForm);
+router.get('/index/:id/newreview', isAuthenticated, getNewReviewForm);
 
 module.exports = router;

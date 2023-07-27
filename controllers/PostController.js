@@ -23,26 +23,22 @@ module.exports = {
   },
 
   updatePost: async (req, res) => {
+    const postId = req.params.id;
+    const { updateName, updateContent } = req.body;
     try {
-      const { id } = req.params;
-      const { postName, postContent } = req.body;
-
-      // Find the post with the provided ID
-      const post = await Post.findByPk(id);
-
-      if (!post) {
-        return res.status(404).json({ error: 'Post not found' });
+      const postData = await Post.findByPk(postId);
+      if (!postData) {
+        return res.status(404).json({ message: 'No post found with this id!' });
       }
 
-      // Update the post
-      post.postName = postName;
-      post.postContent = postContent;
-      await post.save();
+      postData.postName = updateName;
+      postData.postContent = updateContent;
 
-      // Send a success response
-      res.status(200).json({ message: 'Post updated successfully' });
-    } catch (err) {
-      console.error(err);
+      await postData.save();
+
+      res.redirect('/dashboard');
+    } catch (error) {
+      console.error(error);
       res.status(500).json({ error: 'Failed to update post' });
     }
   },

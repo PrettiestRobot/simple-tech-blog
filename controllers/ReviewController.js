@@ -18,7 +18,7 @@ module.exports = {
         reviewContent,
         userId: req.session.currentUser.id,
       });
-      res.status(200).json(newReview);
+      res.redirect('/index');
     } catch (err) {
       console.error(err);
       res.status(500).json(err);

@@ -16,6 +16,7 @@ router.post('/logout', isAuthenticated, UserController.logout);
 
 // Post routes
 router.post('/posts', isAuthenticated, PostController.createNewPost);
+router.put('/posts/:id', isAuthenticated, PostController.updatePost);
 router.delete('/posts/:id', isAuthenticated, PostController.deletePost);
 
 // Review routes

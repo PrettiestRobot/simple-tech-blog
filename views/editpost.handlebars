@@ -1,0 +1,39 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-8 offset-md-2 col-lg-6 offset-lg-3'>
+      <form
+        id='update-form'
+        class='update-form shadow p-4 my-5 mx-auto bg-body rounded w-75 requires-validation'
+        action='/api/posts/{{id}}'
+        method='POST'
+      >
+
+        <h2 class='text-center'>Edit Post</h2>
+        <label for='updateTitle' class='form-label'>Title</label>
+        <input
+          id='updateTitle'
+          class='input-group has-validation'
+          type='text'
+          name='updateName'
+          value='{{postName}}'
+          required
+        />
+        <label for='updateContent' class='form-label'>Post Content</label>
+        <textarea
+          id='updateContent'
+          class='input-group has-validation'
+          name='updateContent'
+          required
+        >{{postContent}}</textarea>
+        <button
+          class='btn btn-primary btn-lg w-100 mt-4 p-3'
+          type='submit'
+        >Update Post</button>
+        <p class='text-center mt-3 mb-0'><a
+            class='text-center mt-3 mb-0'
+            href='/dashboard'
+          >Back to Dashboard</a></p>
+      </form>
+    </div>
+  </div>
+</div>

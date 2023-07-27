@@ -1,6 +1,6 @@
 <h1 class='text-center mt-5 mb-5'>{{welcomeMessage}}</h1>
 
-<section class='container'>
+<section class='container post-delete'>
   <div class='row'>
     <div class='col-md-8 offset-md-2 col-lg-6 offset-lg-3 mb-4'>
       <a
@@ -23,15 +23,14 @@
         <div class='card-footer'>
           <a
             class='btn btn-primary btn-sm p-1'
-            href='/dashboard/editpost/{{id}}'
+            href='/dashboard/{{id}}/edit'
             target='_self'
           >Edit Post</a>
-          <a class='btn btn-danger btn-sm p-1 post-list' data-id='{{id}}'>Delete
-            Post</a>
+          <a class='btn btn-danger btn-sm p-1' data-id='{{id}}'>Delete Post</a>
         </div>
       </div>
     </div>
 
   {{/each}}
 </section>
-<script src='js/delete.js'></script>
+<script src='js/deletePost.js'></script>

@@ -11,7 +11,11 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 const hbs = exphbs.create({
-  // Other options...
+  helpers: {
+    ifEquals: function (arg1, arg2, options) {
+      return arg1 === arg2 ? options.fn(this) : options.inverse(this);
+    },
+  },
   runtimeOptions: {
     allowProtoPropertiesByDefault: true,
   },
