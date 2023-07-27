@@ -44,3 +44,26 @@ nav .nav-link {
   justify-content: space-between;
   align-items: center;
 }
+
+.card-section-head {
+  background-color: var(--secondary-a);
+  color: var(--light);
+  margin: 0;
+}
+
+.card-body {
+  padding: 0;
+}
+
+.card-section-head {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.card-text {
+  padding: 0.5rem 1rem;
+}
+
+.card-footer .card-text {
+  padding: 0;
+}
